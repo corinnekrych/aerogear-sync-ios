@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E24316231A94448BF936F03 /* libPods-push-sdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 690976179180479293B024D8 /* libPods-push-sdkTests.a */; };
 		23FEB25217A7451786DEF392 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A96B5477848779F501C0A /* libPods.a */; };
 		487FDBF7189A8E890036A734 /* sync-sdkTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 487FDBF6189A8E890036A734 /* sync-sdkTests-Info.plist */; };
 		487FDBFA189A8EA90036A734 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 487FDBF8189A8EA90036A734 /* InfoPlist.strings */; };
 		487FDBFC189A8ECA0036A734 /* AGSyncPipeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 487FDBFB189A8ECA0036A734 /* AGSyncPipeSpec.m */; };
+		487FDC00189A9BE40036A734 /* AGSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 487FDBFF189A9BE40036A734 /* AGSynchronizer.m */; };
 		6F53E2BB1768A935001966D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F53E2BA1768A935001966D8 /* Security.framework */; };
 		6F53E2BD1768A963001966D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010C30E1737A95A00CFA575 /* SystemConfiguration.framework */; };
 		6F53E2BE1768A967001966D8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010C30C1737A8F300CFA575 /* MobileCoreServices.framework */; };
@@ -34,7 +34,7 @@
 			containerPortal = A010C2D91737A58100CFA575 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A010C2E01737A58100CFA575;
-			remoteInfo = "push-sdk";
+			remoteInfo = "sync-sdk";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -53,13 +53,14 @@
 /* Begin PBXFileReference section */
 		30384EBD44154D6AB44311B8 /* Pods-sync-sdkTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sync-sdkTests.xcconfig"; path = "Pods/Pods-sync-sdkTests.xcconfig"; sourceTree = "<group>"; };
 		487FDBF4189A8C2A0036A734 /* sync-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sync-sdk-Prefix.pch"; path = "sync-sdk/sync-sdk-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		487FDBF5189A8C340036A734 /* AeroGearPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AeroGearPush.h; path = "sync-sdk/AeroGearPush.h"; sourceTree = SOURCE_ROOT; };
 		487FDBF6189A8E890036A734 /* sync-sdkTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "sync-sdkTests-Info.plist"; path = "sync-sdkTests/sync-sdkTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		487FDBF9189A8EA90036A734 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "sync-sdkTests/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
 		487FDBFB189A8ECA0036A734 /* AGSyncPipeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGSyncPipeSpec.m; path = "sync-sdkTests/AGSyncPipeSpec.m"; sourceTree = SOURCE_ROOT; };
+		487FDBFD189A976D0036A734 /* AeroGearSync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AeroGearSync.h; path = "sync-sdk/AeroGearSync.h"; sourceTree = SOURCE_ROOT; };
+		487FDBFE189A9BE40036A734 /* AGSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSynchronizer.h; sourceTree = "<group>"; };
+		487FDBFF189A9BE40036A734 /* AGSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSynchronizer.m; sourceTree = "<group>"; };
 		53A5CFAC8A3C4BA5AC3E3D4B /* libPods-sync-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sync-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8A96B5477848779F501C0A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		690976179180479293B024D8 /* libPods-push-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-push-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F53E2BA1768A935001966D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A010C2E11737A58100CFA575 /* libsync-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libsync-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A010C2E41737A58100CFA575 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -98,7 +99,6 @@
 				A010C2F61737A58100CFA575 /* UIKit.framework in Frameworks */,
 				A010C2F71737A58100CFA575 /* Foundation.framework in Frameworks */,
 				A010C2FA1737A58100CFA575 /* libsync-sdk.a in Frameworks */,
-				1E24316231A94448BF936F03 /* libPods-push-sdkTests.a in Frameworks */,
 				E861AF5E098044A08AD04C6E /* libPods-sync-sdkTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +138,6 @@
 				A010C2F31737A58100CFA575 /* SenTestingKit.framework */,
 				A010C2F51737A58100CFA575 /* UIKit.framework */,
 				5F8A96B5477848779F501C0A /* libPods.a */,
-				690976179180479293B024D8 /* libPods-push-sdkTests.a */,
 				53A5CFAC8A3C4BA5AC3E3D4B /* libPods-sync-sdkTests.a */,
 			);
 			name = Frameworks;
@@ -149,10 +148,11 @@
 			children = (
 				A010C31E1737D20600CFA575 /* internal */,
 				A010C2E71737A58100CFA575 /* Supporting Files */,
-				487FDBF5189A8C340036A734 /* AeroGearPush.h */,
+				487FDBFD189A976D0036A734 /* AeroGearSync.h */,
+				487FDBFE189A9BE40036A734 /* AGSynchronizer.h */,
+				487FDBFF189A9BE40036A734 /* AGSynchronizer.m */,
 			);
-			name = "sync-sdk";
-			path = "push-sdk";
+			path = "sync-sdk";
 			sourceTree = "<group>";
 		};
 		A010C2E71737A58100CFA575 /* Supporting Files */ = {
@@ -169,8 +169,7 @@
 				A010C2FC1737A58100CFA575 /* Supporting Files */,
 				487FDBFB189A8ECA0036A734 /* AGSyncPipeSpec.m */,
 			);
-			name = "sync-sdkTests";
-			path = "push-sdkTests";
+			path = "sync-sdkTests";
 			sourceTree = "<group>";
 		};
 		A010C2FC1737A58100CFA575 /* Supporting Files */ = {
@@ -206,7 +205,7 @@
 			dependencies = (
 			);
 			name = "sync-sdk";
-			productName = "push-sdk";
+			productName = "sync-sdk";
 			productReference = A010C2E11737A58100CFA575 /* libsync-sdk.a */;
 			productType = "com.apple.product-type.library.static";
 		};
@@ -227,7 +226,7 @@
 				A010C2F91737A58100CFA575 /* PBXTargetDependency */,
 			);
 			name = "sync-sdkTests";
-			productName = "push-sdkTests";
+			productName = "sync-sdkTests";
 			productReference = A010C2F21737A58100CFA575 /* sync-sdkTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
@@ -335,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				487FDC00189A9BE40036A734 /* AGSynchronizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,9 +425,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D09593524A194057A715476C /* Pods.xcconfig */;
 			buildSettings = {
-				DSTROOT = /tmp/push_sdk.dst;
+				DSTROOT = /tmp/sync_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "push-sdk/push-sdk-Prefix.pch";
+				GCC_PREFIX_HEADER = "sync-sdk/sync-sdk-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -438,9 +438,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D09593524A194057A715476C /* Pods.xcconfig */;
 			buildSettings = {
-				DSTROOT = /tmp/push_sdk.dst;
+				DSTROOT = /tmp/sync_sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "push-sdk/push-sdk-Prefix.pch";
+				GCC_PREFIX_HEADER = "sync-sdk/sync-sdk-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -456,8 +456,8 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "push-sdk/push-sdk-Prefix.pch";
-				INFOPLIST_FILE = "push-sdkTests/push-sdkTests-Info.plist";
+				GCC_PREFIX_HEADER = "sync-sdk/sync-sdk-Prefix.pch";
+				INFOPLIST_FILE = "sync-sdkTests/sync-sdkTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -472,8 +472,8 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "push-sdk/push-sdk-Prefix.pch";
-				INFOPLIST_FILE = "push-sdkTests/push-sdkTests-Info.plist";
+				GCC_PREFIX_HEADER = "sync-sdk/sync-sdk-Prefix.pch";
+				INFOPLIST_FILE = "sync-sdkTests/sync-sdkTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
 			};

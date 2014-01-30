@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-#ifndef _AEROGEARPUSH_
-#define _AEROGEARPUSH_
+#ifndef _AEROGEARSYNC_
+#define _AEROGEARSYNC_
 
 // imports
 //#import ".h"
 
 
-#endif /* _AEROGEARPUSH_ */
+#endif /* _AEROGEARSYNC_ */

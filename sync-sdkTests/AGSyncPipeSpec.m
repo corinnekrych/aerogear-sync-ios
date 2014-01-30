@@ -20,7 +20,7 @@
 #import "OHHTTPStubsResponse.h"
 
 
-#import "AGSyncPipe.h"
+//#import "AGSyncPipe.h"
 
 SPEC_BEGIN(AGSyncPipeSpec)
 
@@ -29,7 +29,7 @@ describe(@"AGDeviceRegistration", ^{
     
     context(@"when created.....", ^{
         
-        __block AGSyncPipe *syncPipe;
+        //__block AGSyncPipe *syncPipe;
 
         beforeAll(^{
             
@@ -45,7 +45,7 @@ describe(@"AGDeviceRegistration", ^{
 //            
 //            
 //            registration = [[AGDeviceRegistration alloc]
-//                            initWithServerURL:[NSURL URLWithString:@"http://localhost:8080/ag-push/"]];
+//                            initWithServerURL:[NSURL URLWithString:@"http://localhost:8080/ag-sync/"]];
             
         });
         
