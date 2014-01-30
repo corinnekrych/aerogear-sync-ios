@@ -12,6 +12,8 @@
 		487FDBFA189A8EA90036A734 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 487FDBF8189A8EA90036A734 /* InfoPlist.strings */; };
 		487FDBFC189A8ECA0036A734 /* AGSyncPipeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 487FDBFB189A8ECA0036A734 /* AGSyncPipeSpec.m */; };
 		487FDC00189A9BE40036A734 /* AGSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 487FDBFF189A9BE40036A734 /* AGSynchronizer.m */; };
+		487FDC10189A9EF10036A734 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 487FDC0F189A9EF10036A734 /* libsqlite3.dylib */; };
+		487FDC12189A9F150036A734 /* libPods-sync-sdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 487FDC11189A9F150036A734 /* libPods-sync-sdkTests.a */; };
 		6F53E2BB1768A935001966D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F53E2BA1768A935001966D8 /* Security.framework */; };
 		6F53E2BD1768A963001966D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010C30E1737A95A00CFA575 /* SystemConfiguration.framework */; };
 		6F53E2BE1768A967001966D8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010C30C1737A8F300CFA575 /* MobileCoreServices.framework */; };
@@ -25,7 +27,6 @@
 		A010C30F1737A95A00CFA575 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010C30E1737A95A00CFA575 /* SystemConfiguration.framework */; };
 		A03AC14317817BA300FF13A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03AC14217817BA300FF13A7 /* CoreGraphics.framework */; };
 		A03AC14417817BB300FF13A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A03AC14217817BA300FF13A7 /* CoreGraphics.framework */; };
-		E861AF5E098044A08AD04C6E /* libPods-sync-sdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5CFAC8A3C4BA5AC3E3D4B /* libPods-sync-sdkTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,15 @@
 		487FDBFD189A976D0036A734 /* AeroGearSync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AeroGearSync.h; path = "sync-sdk/AeroGearSync.h"; sourceTree = SOURCE_ROOT; };
 		487FDBFE189A9BE40036A734 /* AGSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSynchronizer.h; sourceTree = "<group>"; };
 		487FDBFF189A9BE40036A734 /* AGSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSynchronizer.m; sourceTree = "<group>"; };
+		487FDC01189A9EB70036A734 /* libPods-AeroGear-Crypto.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-AeroGear-Crypto.a"; path = "Pods/build/Debug-iphoneos/libPods-AeroGear-Crypto.a"; sourceTree = "<group>"; };
+		487FDC02189A9EB70036A734 /* libPods-AeroGear.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-AeroGear.a"; path = "Pods/build/Debug-iphoneos/libPods-AeroGear.a"; sourceTree = "<group>"; };
+		487FDC03189A9EB70036A734 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
+		487FDC04189A9EB70036A734 /* libPods-FMDB.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-FMDB.a"; path = "Pods/build/Debug-iphoneos/libPods-FMDB.a"; sourceTree = "<group>"; };
+		487FDC05189A9EB70036A734 /* libPods-sync-sdkTests-Kiwi.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-sync-sdkTests-Kiwi.a"; path = "Pods/build/Debug-iphoneos/libPods-sync-sdkTests-Kiwi.a"; sourceTree = "<group>"; };
+		487FDC06189A9EB70036A734 /* libPods-sync-sdkTests-OHHTTPStubs.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-sync-sdkTests-OHHTTPStubs.a"; path = "Pods/build/Debug-iphoneos/libPods-sync-sdkTests-OHHTTPStubs.a"; sourceTree = "<group>"; };
+		487FDC07189A9EB70036A734 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		487FDC0F189A9EF10036A734 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		487FDC11189A9F150036A734 /* libPods-sync-sdkTests.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-sync-sdkTests.a"; path = "Pods/build/Debug-iphoneos/libPods-sync-sdkTests.a"; sourceTree = "<group>"; };
 		53A5CFAC8A3C4BA5AC3E3D4B /* libPods-sync-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sync-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8A96B5477848779F501C0A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F53E2BA1768A935001966D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -91,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				487FDC12189A9F150036A734 /* libPods-sync-sdkTests.a in Frameworks */,
+				487FDC10189A9EF10036A734 /* libsqlite3.dylib in Frameworks */,
 				A03AC14417817BB300FF13A7 /* CoreGraphics.framework in Frameworks */,
 				6F53E2BB1768A935001966D8 /* Security.framework in Frameworks */,
 				A010C30F1737A95A00CFA575 /* SystemConfiguration.framework in Frameworks */,
@@ -99,7 +111,6 @@
 				A010C2F61737A58100CFA575 /* UIKit.framework in Frameworks */,
 				A010C2F71737A58100CFA575 /* Foundation.framework in Frameworks */,
 				A010C2FA1737A58100CFA575 /* libsync-sdk.a in Frameworks */,
-				E861AF5E098044A08AD04C6E /* libPods-sync-sdkTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +141,15 @@
 		A010C2E31737A58100CFA575 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				487FDC11189A9F150036A734 /* libPods-sync-sdkTests.a */,
+				487FDC0F189A9EF10036A734 /* libsqlite3.dylib */,
+				487FDC01189A9EB70036A734 /* libPods-AeroGear-Crypto.a */,
+				487FDC02189A9EB70036A734 /* libPods-AeroGear.a */,
+				487FDC03189A9EB70036A734 /* libPods-AFNetworking.a */,
+				487FDC04189A9EB70036A734 /* libPods-FMDB.a */,
+				487FDC05189A9EB70036A734 /* libPods-sync-sdkTests-Kiwi.a */,
+				487FDC06189A9EB70036A734 /* libPods-sync-sdkTests-OHHTTPStubs.a */,
+				487FDC07189A9EB70036A734 /* libPods.a */,
 				A03AC14217817BA300FF13A7 /* CoreGraphics.framework */,
 				6F53E2BA1768A935001966D8 /* Security.framework */,
 				A010C30E1737A95A00CFA575 /* SystemConfiguration.framework */,
