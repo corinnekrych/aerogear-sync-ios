@@ -19,6 +19,7 @@
 #define _AEROGEARSYNC_
 
 // imports
+#import "AGSync.h"
 #import "AGSyncPipe.h"
 
 
