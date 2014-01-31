@@ -21,6 +21,7 @@
 // imports
 #import "AGSync.h"
 #import "AGSyncPipe.h"
+#import "AGSyncPipeConfiguration.h"
 
 
 #endif /* _AEROGEARSYNC_ */
