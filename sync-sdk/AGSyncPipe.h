@@ -16,7 +16,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "AGHttpClient.h"
 #import "AGPipe.h"
 #import "AGPipeConfig.h"
 #import "AGSync.h"

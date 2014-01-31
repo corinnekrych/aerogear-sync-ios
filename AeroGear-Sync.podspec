@@ -8,6 +8,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => 'https://github.com/corinnekrych/aerogear-sync-ios.git' }
   s.platform     = :ios, 5.0
   s.source_files = 'sync-sdk/**/*.{h,m}'
-  s.public_header_files = 'sync-sdk/AeroGearSync.h'
+  s.public_header_files = 'sync-sdk/AeroGearSync.h', 'sync-sdk/AGSyncPipe.h'
   s.requires_arc = true
 end
