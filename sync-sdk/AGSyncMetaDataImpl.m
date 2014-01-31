@@ -14,14 +14,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#import "AGSyncMetaDataImpl.h"
 
-#import <Foundation/Foundation.h>
 
-@protocol AGSync <AGPipe>
+@implementation AGSyncMetaDataImpl
+@synthesize oid;
+@synthesize rev;
+@synthesize content;
 
--(void) save:(NSDictionary*) object
-     success:(void (^)(id responseObject))success
-     failure:(void (^)(NSError *error))failure
-    conflict:(void (^)(NSError *error, id responseObject, id delta))conflict;
++(id<AGSyncMetaData>)wrapWithMetaData:(id)object {
+   return [[self alloc] initWithMetaData:object];
+}
 
+-(id)initWithMetaData:(id)object {
+    self = [super init];
+    if(self) {
+        self.content = object;
+    }
+    return self;
+}
 @end

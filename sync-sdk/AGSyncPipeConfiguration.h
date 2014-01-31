@@ -16,5 +16,6 @@
  */
 #import <Foundation/Foundation.h>
 
-@protocol AGSyncPipeConfig <NSObject>
+
+@interface AGSyncPipeConfiguration : NSObject <AGPipeConfig>
 @end

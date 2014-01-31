@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		23FEB25217A7451786DEF392 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F8A96B5477848779F501C0A /* libPods.a */; };
+		38EAB6673A848777020EC0DA /* AGHTTPMockHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAB78115202F4FDDCB1F6A /* AGHTTPMockHelper.m */; };
+		38EAB7193207BC9357150B5B /* AGSyncPipeConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAB7949159E228125B2A55 /* AGSyncPipeConfiguration.m */; };
+		38EABE7973FA771CCCB65BE7 /* AGSyncMetaDataImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAB7D71C9D914F267AABB3 /* AGSyncMetaDataImpl.m */; };
 		487FDBF7189A8E890036A734 /* sync-sdkTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 487FDBF6189A8E890036A734 /* sync-sdkTests-Info.plist */; };
 		487FDBFA189A8EA90036A734 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 487FDBF8189A8EA90036A734 /* InfoPlist.strings */; };
 		487FDBFC189A8ECA0036A734 /* AGSyncPipeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 487FDBFB189A8ECA0036A734 /* AGSyncPipeSpec.m */; };
@@ -55,7 +58,13 @@
 /* Begin PBXFileReference section */
 		30384EBD44154D6AB44311B8 /* Pods-sync-sdkTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sync-sdkTests.xcconfig"; path = "Pods/Pods-sync-sdkTests.xcconfig"; sourceTree = "<group>"; };
 		38EAB68BD05ECD8F40E9267D /* AGSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSync.h; sourceTree = "<group>"; };
-		38EABF4CAAB1FEB5894EC971 /* AGSyncPipeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSyncPipeConfig.h; sourceTree = "<group>"; };
+		38EAB78115202F4FDDCB1F6A /* AGHTTPMockHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGHTTPMockHelper.m; sourceTree = "<group>"; };
+		38EAB7949159E228125B2A55 /* AGSyncPipeConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSyncPipeConfiguration.m; sourceTree = "<group>"; };
+		38EAB7D71C9D914F267AABB3 /* AGSyncMetaDataImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSyncMetaDataImpl.m; sourceTree = "<group>"; };
+		38EABB05396B24BB03873871 /* AGSyncMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSyncMetaData.h; sourceTree = "<group>"; };
+		38EABD128E9BE83A4ED15CD8 /* AGHTTPMockHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGHTTPMockHelper.h; sourceTree = "<group>"; };
+		38EABD141A764D36C19E5267 /* AGSyncPipeConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSyncPipeConfiguration.h; sourceTree = "<group>"; };
+		38EABD780E8724E2455131DC /* AGSyncMetaDataImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSyncMetaDataImpl.h; sourceTree = "<group>"; };
 		487FDBF4189A8C2A0036A734 /* sync-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sync-sdk-Prefix.pch"; path = "sync-sdk/sync-sdk-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		487FDBF6189A8E890036A734 /* sync-sdkTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "sync-sdkTests-Info.plist"; path = "sync-sdkTests/sync-sdkTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		487FDBF9189A8EA90036A734 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "sync-sdkTests/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
@@ -122,6 +131,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38EAB41AA38BA76B5530C2C2 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				38EABD128E9BE83A4ED15CD8 /* AGHTTPMockHelper.h */,
+				38EAB78115202F4FDDCB1F6A /* AGHTTPMockHelper.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		A010C2D81737A58100CFA575 = {
 			isa = PBXGroup;
 			children = (
@@ -171,13 +189,18 @@
 		A010C2E61737A58100CFA575 /* sync-sdk */ = {
 			isa = PBXGroup;
 			children = (
-				A010C31E1737D20600CFA575 /* internal */,
-				A010C2E71737A58100CFA575 /* Supporting Files */,
 				487FDBFD189A976D0036A734 /* AeroGearSync.h */,
 				487FDBFE189A9BE40036A734 /* AGSynchronizer.h */,
 				487FDBFF189A9BE40036A734 /* AGSynchronizer.m */,
 				38EAB68BD05ECD8F40E9267D /* AGSync.h */,
-				38EABF4CAAB1FEB5894EC971 /* AGSyncPipeConfig.h */,
+				487FDC13189AA0E00036A734 /* AGSyncPipe.h */,
+				487FDC14189AA0E00036A734 /* AGSyncPipe.m */,
+				A010C2E71737A58100CFA575 /* Supporting Files */,
+				38EAB7949159E228125B2A55 /* AGSyncPipeConfiguration.m */,
+				38EABD141A764D36C19E5267 /* AGSyncPipeConfiguration.h */,
+				38EABB05396B24BB03873871 /* AGSyncMetaData.h */,
+				38EAB7D71C9D914F267AABB3 /* AGSyncMetaDataImpl.m */,
+				38EABD780E8724E2455131DC /* AGSyncMetaDataImpl.h */,
 			);
 			path = "sync-sdk";
 			sourceTree = "<group>";
@@ -195,6 +218,7 @@
 			children = (
 				A010C2FC1737A58100CFA575 /* Supporting Files */,
 				487FDBFB189A8ECA0036A734 /* AGSyncPipeSpec.m */,
+				38EAB41AA38BA76B5530C2C2 /* utils */,
 			);
 			path = "sync-sdkTests";
 			sourceTree = "<group>";
@@ -206,15 +230,6 @@
 				487FDBF6189A8E890036A734 /* sync-sdkTests-Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A010C31E1737D20600CFA575 /* internal */ = {
-			isa = PBXGroup;
-			children = (
-				487FDC13189AA0E00036A734 /* AGSyncPipe.h */,
-				487FDC14189AA0E00036A734 /* AGSyncPipe.m */,
-			);
-			name = internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +380,9 @@
 			files = (
 				487FDC15189AA0E00036A734 /* AGSyncPipe.m in Sources */,
 				487FDC00189A9BE40036A734 /* AGSynchronizer.m in Sources */,
+				38EAB7193207BC9357150B5B /* AGSyncPipeConfiguration.m in Sources */,
+				38EAB6673A848777020EC0DA /* AGHTTPMockHelper.m in Sources */,
+				38EABE7973FA771CCCB65BE7 /* AGSyncMetaDataImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

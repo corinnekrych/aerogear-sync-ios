@@ -16,54 +16,91 @@
  */
 
 #import <Kiwi/Kiwi.h>
-#import "OHHTTPStubs.h"
-#import "OHHTTPStubsResponse.h"
+#import "AGSyncPipe.h"
+#import "AGSyncPipeConfiguration.h"
+#import "AGHTTPMockHelper.h"
 
+SPEC_BEGIN(AGPipelineSpec)
 
-//#import "AGSyncPipe.h"
+describe(@"AGSyncPipe", ^{
+    context(@"when newly created", ^{
 
-SPEC_BEGIN(AGSyncPipeSpec)
-
-
-describe(@"AGDeviceRegistration", ^{
-    
-    context(@"when created.....", ^{
-        
-        //__block AGSyncPipe *syncPipe;
+        __block NSString *PROJECTS = nil;
+        __block AGSyncPipe *pipe = nil;
+        __block BOOL finishedFlag;
 
         beforeAll(^{
+            PROJECTS = @"[{\"oid\":1,\"rev\":1, \"content\": {\"title\":\"First Project\",\"style\":\"project-161-58-58\"}}]";
+        });
+
+        beforeEach(^{
+
+            AGSyncPipeConfiguration* config = [[AGSyncPipeConfiguration alloc] init];
+            [config setBaseURL:[NSURL URLWithString:@"http://server.com"]];
+            [config setName:@"projects"];
+
+            // Note: we set the timeout(sec) to a low level so that
+            // we can test the timeout methods with adjusting response delay
+            [config setTimeout:1];
+
+            pipe = [AGSyncPipe pipeWithConfig:config];
+        });
+
+        afterEach(^{
+            // remove all handlers installed by test methods
+            // to avoid any interference
+            [AGHTTPMockHelper clearAllMockedRequests];
+
+            finishedFlag = NO;
+        });
+        
+        it(@"should not be nil", ^{
+            [pipe shouldNotBeNil];
+        });
+        
+        it(@"can be added to pipeline", ^{
+//            [pipeline add:pipe ];
+//            
+//            id<AGPipe> pipe = [pipeline pipeWithName:@"tests"];
+//            
+//            [(id)pipe shouldNotBeNil];
+//            [[pipe.type should] equal:@"REST"];
+        });
+        
+        it(@"AGPipeline should allow add of an AGPipe object with a different baseURL", ^{
             
-            // install the mock:
-//            [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-//                return YES;
-//            } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
-//                return [OHHTTPStubsResponse responseWithData:[NSData data]
-//                                                  statusCode:200
-//                                                responseTime:0 // immediate response
-//                                                     headers:@{@"Content-Type":@"text/json]"}];
+//            [pipeline pipe:^(id<AGPipeConfig> config) {
+//                [config setName:@"tasks"];
+//                [config setBaseURL:[NSURL URLWithString:@"http://blah.com/context"]];
 //            }];
 //            
-//            
-//            registration = [[AGDeviceRegistration alloc]
-//                            initWithServerURL:[NSURL URLWithString:@"http://localhost:8080/ag-sync/"]];
-            
+//            id<AGPipe> pipe = [pipeline pipeWithName:@"tasks"];
+//            [pipe.URL shouldNotBeNil];
+//            [[pipe.URL should] equal:[NSURL URLWithString:@"http://blah.com/context/tasks"]];
         });
-        
-        it(@"shared instance should not be nil", ^{
-            
-//            [[AGDeviceRegistration sharedInstance] shouldNotBeNil];
+
+        it(@"should have an expected url", ^{
+            [[pipe.URL should] equal:[NSURL URLWithString:@"http://server.com/projects"]];
         });
-        
-        it(@"failure block should be invoked with an NSError object if configuration block is not set", ^{
-           
-//            [registration registerWithClientInfo:nil success:^() {
-//                // nope...
-//            } failure:^(NSError *error) {
-//                [error shouldNotBeNil];
-//            }
-//             ];
+
+        it(@"should have an expected type", ^{
+            [[pipe.type should] equal:@"SYNC"];
         });
-        
+
+        it(@"should successfully read", ^{
+            // install the mock:
+            [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
+
+            [pipe read:^(id responseObject) {
+                [responseObject shouldNotBeNil];
+                finishedFlag = YES;
+
+            } failure:^(NSError *error) {
+                // nope
+            }];
+
+            [[expectFutureValue(theValue(finishedFlag)) shouldEventually] beYes];
+        });
     });
 });
 

@@ -23,9 +23,9 @@
 
 @class AGRESTPipe;
 
-@interface AGSyncPipe  : NSObject <AGSync> {
+@interface AGSyncPipe : NSObject <AGSync> {
 @protected
-    AGRESTPipe *_restClient;
+    AGRESTPipe *_restPipe;
 }
 
 +(id) pipeWithConfig:(id<AGPipeConfig>) pipeConfig;

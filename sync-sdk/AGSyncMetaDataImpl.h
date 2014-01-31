@@ -14,14 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 #import <Foundation/Foundation.h>
+#import "AGSyncMetaData.h"
 
-@protocol AGSync <AGPipe>
 
--(void) save:(NSDictionary*) object
-     success:(void (^)(id responseObject))success
-     failure:(void (^)(NSError *error))failure
-    conflict:(void (^)(NSError *error, id responseObject, id delta))conflict;
-
+@interface AGSyncMetaDataImpl : NSObject <AGSyncMetaData>
++(id<AGSyncMetaData>)wrapWithMetaData:(id)data;
 @end

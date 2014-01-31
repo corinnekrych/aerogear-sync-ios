@@ -17,52 +17,76 @@
 
 #import "AGSyncPipe.h"
 #import "AGRESTPipe.h"
+#import "AGSyncPipeConfiguration.h"
+#import "AGSyncMetaData.h"
+#import "AGSyncMetaDataImpl.h"
 
-@implementation AGSyncPipe
+@implementation AGSyncPipe {
+    AGSyncPipeConfiguration* _config;
+    //id<AGSyncMetaData> _metaData;
+}
+
+@synthesize type = _type;
+@synthesize URL = _URL;
+
 + (id)pipeWithConfig:(id <AGPipeConfig>)pipeConfig {
-    return nil;
+    return [[self alloc] initWithConfig:pipeConfig];
 }
 
-- (id)initWithConfig:(id <AGPipeConfig>)pipeConfig {
-    return nil;
+- (id)initWithConfig:(id <AGPipeConfig>)config {
+    self = [super init];
+    if (self) {
+        _config = (AGSyncPipeConfiguration *)config;
+        _type = _config.type;
+        NSURL* baseURL = _config.baseURL;
+        NSString* endpoint = _config.endpoint;
+        NSURL* finalURL = [self appendEndpoint:endpoint toURL:baseURL];
+        _URL = finalURL;
+        _restPipe = [AGRESTPipe pipeWithConfig:_config];
+    }
+    
+    return self;
 }
 
-- (NSString *)type {
-    return nil;
-}
 
-- (NSURL *)URL {
-    return nil;
-}
-
-- (void)read:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure
-    conflict: (void (^)(NSError *error, id responseObject)){
-
+- (void)read:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
+    [_restPipe read:success failure:failure];
 }
 
 - (void)read:(id)value success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
-
+    id<AGSyncMetaData> metaValue = [AGSyncMetaDataImpl wrapWithMetaData:value];
+    [_restPipe read:metaValue success:success failure:failure];
 }
 
 - (void)readWithParams:(NSDictionary *)parameterProvider success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
-
+    [_restPipe readWithParams:parameterProvider success:success failure:failure];
 }
 
-- (void)save:(NSDictionary *)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
+- (void)save:(id<AGSyncMetaData>)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure conflict:(void (^)(NSError *error, id responseObject, id delta))conflict {
+    [_restPipe save:object success:success failure:^(NSError *error) {
+        NSLog(@"Inside Failure....");
+        //conflict(error, responseObject);
+        if (error) {
+
+        }
+    }];
 
 }
 
 - (void)remove:(NSDictionary *)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
+    [_restPipe remove:object success:success failure:failure];
 
 }
 
-- (void)cancel {
+// TODO same as AGRESTPipe
+// private helper to append the endpoint
+-(NSURL*) appendEndpoint:(NSString*)endpoint toURL:(NSURL*)baseURL {
+    if (endpoint == nil) {
+        endpoint = @"";
+    }
 
+    // append the endpoint name and use it as the final URL
+    return [baseURL URLByAppendingPathComponent:endpoint];
 }
-
-- (void)setUploadProgressBlock:(void (^)(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))block {
-
-}
-
 
 @end
