@@ -10,5 +10,4 @@ Pod::Spec.new do |s|
   s.source_files = 'sync-sdk/**/*.{h,m}'
   s.public_header_files = 'sync-sdk/AeroGearSync.h'
   s.requires_arc = true
-  s.dependency 'AeroGear', '1.3.0'
 end
