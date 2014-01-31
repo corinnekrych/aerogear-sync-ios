@@ -14,6 +14,7 @@
 		487FDC00189A9BE40036A734 /* AGSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 487FDBFF189A9BE40036A734 /* AGSynchronizer.m */; };
 		487FDC10189A9EF10036A734 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 487FDC0F189A9EF10036A734 /* libsqlite3.dylib */; };
 		487FDC12189A9F150036A734 /* libPods-sync-sdkTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 487FDC11189A9F150036A734 /* libPods-sync-sdkTests.a */; };
+		487FDC15189AA0E00036A734 /* AGSyncPipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 487FDC14189AA0E00036A734 /* AGSyncPipe.m */; };
 		6F53E2BB1768A935001966D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F53E2BA1768A935001966D8 /* Security.framework */; };
 		6F53E2BD1768A963001966D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010C30E1737A95A00CFA575 /* SystemConfiguration.framework */; };
 		6F53E2BE1768A967001966D8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010C30C1737A8F300CFA575 /* MobileCoreServices.framework */; };
@@ -53,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		30384EBD44154D6AB44311B8 /* Pods-sync-sdkTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sync-sdkTests.xcconfig"; path = "Pods/Pods-sync-sdkTests.xcconfig"; sourceTree = "<group>"; };
+		38EAB68BD05ECD8F40E9267D /* AGSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSync.h; sourceTree = "<group>"; };
+		38EABF4CAAB1FEB5894EC971 /* AGSyncPipeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSyncPipeConfig.h; sourceTree = "<group>"; };
 		487FDBF4189A8C2A0036A734 /* sync-sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sync-sdk-Prefix.pch"; path = "sync-sdk/sync-sdk-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		487FDBF6189A8E890036A734 /* sync-sdkTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "sync-sdkTests-Info.plist"; path = "sync-sdkTests/sync-sdkTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		487FDBF9189A8EA90036A734 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "sync-sdkTests/en.lproj/InfoPlist.strings"; sourceTree = SOURCE_ROOT; };
@@ -60,15 +63,17 @@
 		487FDBFD189A976D0036A734 /* AeroGearSync.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AeroGearSync.h; path = "sync-sdk/AeroGearSync.h"; sourceTree = SOURCE_ROOT; };
 		487FDBFE189A9BE40036A734 /* AGSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSynchronizer.h; sourceTree = "<group>"; };
 		487FDBFF189A9BE40036A734 /* AGSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSynchronizer.m; sourceTree = "<group>"; };
-		487FDC01189A9EB70036A734 /* libPods-AeroGear-Crypto.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-AeroGear-Crypto.a"; path = "Pods/build/Debug-iphoneos/libPods-AeroGear-Crypto.a"; sourceTree = "<group>"; };
-		487FDC02189A9EB70036A734 /* libPods-AeroGear.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-AeroGear.a"; path = "Pods/build/Debug-iphoneos/libPods-AeroGear.a"; sourceTree = "<group>"; };
-		487FDC03189A9EB70036A734 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
-		487FDC04189A9EB70036A734 /* libPods-FMDB.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-FMDB.a"; path = "Pods/build/Debug-iphoneos/libPods-FMDB.a"; sourceTree = "<group>"; };
-		487FDC05189A9EB70036A734 /* libPods-sync-sdkTests-Kiwi.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-sync-sdkTests-Kiwi.a"; path = "Pods/build/Debug-iphoneos/libPods-sync-sdkTests-Kiwi.a"; sourceTree = "<group>"; };
-		487FDC06189A9EB70036A734 /* libPods-sync-sdkTests-OHHTTPStubs.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-sync-sdkTests-OHHTTPStubs.a"; path = "Pods/build/Debug-iphoneos/libPods-sync-sdkTests-OHHTTPStubs.a"; sourceTree = "<group>"; };
-		487FDC07189A9EB70036A734 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		487FDC01189A9EB70036A734 /* libPods-AeroGear-Crypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AeroGear-Crypto.a"; path = "Pods/build/Debug-iphoneos/libPods-AeroGear-Crypto.a"; sourceTree = "<group>"; };
+		487FDC02189A9EB70036A734 /* libPods-AeroGear.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AeroGear.a"; path = "Pods/build/Debug-iphoneos/libPods-AeroGear.a"; sourceTree = "<group>"; };
+		487FDC03189A9EB70036A734 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
+		487FDC04189A9EB70036A734 /* libPods-FMDB.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-FMDB.a"; path = "Pods/build/Debug-iphoneos/libPods-FMDB.a"; sourceTree = "<group>"; };
+		487FDC05189A9EB70036A734 /* libPods-sync-sdkTests-Kiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-sync-sdkTests-Kiwi.a"; path = "Pods/build/Debug-iphoneos/libPods-sync-sdkTests-Kiwi.a"; sourceTree = "<group>"; };
+		487FDC06189A9EB70036A734 /* libPods-sync-sdkTests-OHHTTPStubs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-sync-sdkTests-OHHTTPStubs.a"; path = "Pods/build/Debug-iphoneos/libPods-sync-sdkTests-OHHTTPStubs.a"; sourceTree = "<group>"; };
+		487FDC07189A9EB70036A734 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		487FDC0F189A9EF10036A734 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		487FDC11189A9F150036A734 /* libPods-sync-sdkTests.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-sync-sdkTests.a"; path = "Pods/build/Debug-iphoneos/libPods-sync-sdkTests.a"; sourceTree = "<group>"; };
+		487FDC11189A9F150036A734 /* libPods-sync-sdkTests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-sync-sdkTests.a"; path = "Pods/build/Debug-iphoneos/libPods-sync-sdkTests.a"; sourceTree = "<group>"; };
+		487FDC13189AA0E00036A734 /* AGSyncPipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSyncPipe.h; sourceTree = "<group>"; };
+		487FDC14189AA0E00036A734 /* AGSyncPipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSyncPipe.m; sourceTree = "<group>"; };
 		53A5CFAC8A3C4BA5AC3E3D4B /* libPods-sync-sdkTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sync-sdkTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8A96B5477848779F501C0A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F53E2BA1768A935001966D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -171,6 +176,8 @@
 				487FDBFD189A976D0036A734 /* AeroGearSync.h */,
 				487FDBFE189A9BE40036A734 /* AGSynchronizer.h */,
 				487FDBFF189A9BE40036A734 /* AGSynchronizer.m */,
+				38EAB68BD05ECD8F40E9267D /* AGSync.h */,
+				38EABF4CAAB1FEB5894EC971 /* AGSyncPipeConfig.h */,
 			);
 			path = "sync-sdk";
 			sourceTree = "<group>";
@@ -204,6 +211,8 @@
 		A010C31E1737D20600CFA575 /* internal */ = {
 			isa = PBXGroup;
 			children = (
+				487FDC13189AA0E00036A734 /* AGSyncPipe.h */,
+				487FDC14189AA0E00036A734 /* AGSyncPipe.m */,
 			);
 			name = internal;
 			sourceTree = "<group>";
@@ -354,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				487FDC15189AA0E00036A734 /* AGSyncPipe.m in Sources */,
 				487FDC00189A9BE40036A734 /* AGSynchronizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
