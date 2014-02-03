@@ -54,8 +54,8 @@
 }
 
 - (void)read:(id)value success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
-    id<AGSyncMetaData> metaValue = [AGSyncMetaDataImpl wrapWithMetaData:value];
-    [_restPipe read:metaValue success:success failure:failure];
+    AGSyncMetaDataImpl* metaValue = [AGSyncMetaDataImpl wrapContent:value];
+    [_restPipe read:[metaValue serialize] success:success failure:failure];
 }
 
 - (void)readWithParams:(NSDictionary *)parameterProvider success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {

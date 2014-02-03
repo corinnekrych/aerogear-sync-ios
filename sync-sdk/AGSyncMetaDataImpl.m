@@ -34,7 +34,7 @@
     return self;
 }
 
--(NSDictionary*)serialize:(id<AGSyncMetaData>)data {
-    return [[NSDictionary alloc] initWithDictionary:@{@"id":data.oid, @"rev":data.rev, @"content":data.content}];
+-(NSDictionary*)serialize {
+    return [[NSDictionary alloc] initWithDictionary:@{@"id":self.oid, @"rev":self.rev, @"content":self.content}];
 }
 @end
