@@ -22,6 +22,6 @@
 @property (nonatomic, readonly) NSString* rev;
 @property (nonatomic, strong) id content;
 
-+(id<AGSyncMetaData>)wrapContent:(id)data;
-+(NSDictionary*)serialize:(id<AGSyncMetaData>)metadata;
++(AGSyncMetaData*)wrapContent:(id)data;
++(NSDictionary*)serialize:(AGSyncMetaData*)metadata;
 @end

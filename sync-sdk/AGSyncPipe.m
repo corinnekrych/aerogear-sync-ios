@@ -53,7 +53,7 @@
     [_restPipe read:success failure:failure];
 }
 
-- (void)read:(id<AGSyncMetaData>)value success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
+- (void)read:(AGSyncMetaData*)value success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
     //AGSyncMetaData* metaValue = [AGSyncMetaData wrapContent:value];
     [_restPipe read:value.oid success:^(id responseObject) {
         // not needed if rest point
@@ -73,7 +73,7 @@
     [_restPipe readWithParams:parameterProvider success:success failure:failure];
 }
 
-- (void)save:(id<AGSyncMetaData>)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure conflict:(void (^)(NSError *error, id responseObject, id delta))conflict {
+- (void)save:(AGSyncMetaData*)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure conflict:(void (^)(NSError *error, id responseObject, id delta))conflict {
     //AGSyncMetaData* metaValue = [AGSyncMetaData wrapContent:object];
     NSDictionary* temp = [AGSyncMetaData serialize:object];
     [_restPipe save:temp success:^(id responseObject) {
