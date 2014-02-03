@@ -21,9 +21,9 @@
 #import "AGSyncMetaData.h"
 #import "AGSyncMetaDataImpl.h"
 
+
 @implementation AGSyncPipe {
     AGSyncPipeConfiguration* _config;
-    //id<AGSyncMetaData> _metaData;
 }
 
 @synthesize type = _type;
@@ -44,7 +44,7 @@
         _URL = finalURL;
         _restPipe = [AGRESTPipe pipeWithConfig:_config];
     }
-    
+
     return self;
 }
 
@@ -53,9 +53,20 @@
     [_restPipe read:success failure:failure];
 }
 
-- (void)read:(id)value success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
-    AGSyncMetaDataImpl* metaValue = [AGSyncMetaDataImpl wrapContent:value];
-    [_restPipe read:[metaValue serialize] success:success failure:failure];
+- (void)read:(id<AGSyncMetaData>)value success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
+    //AGSyncMetaDataImpl* metaValue = [AGSyncMetaDataImpl wrapContent:value];
+    [_restPipe read:value.oid success:^(id responseObject) {
+        // not needed if rest point
+        NSDictionary *contentDict = [NSJSONSerialization JSONObjectWithData:[responseObject[@"content"]  dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        NSDictionary* dict = @{@"id":responseObject[@"id"], @"rev":responseObject[@"rev"], @"content":contentDict};
+        if (success) {
+            success(dict);
+        }
+    } failure:^(NSError *error) {
+        if(failure) {
+            failure(error);
+        }
+    } ];
 }
 
 - (void)readWithParams:(NSDictionary *)parameterProvider success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
@@ -63,7 +74,17 @@
 }
 
 - (void)save:(id<AGSyncMetaData>)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure conflict:(void (^)(NSError *error, id responseObject, id delta))conflict {
-    [_restPipe save:object success:success failure:^(NSError *error) {
+    //AGSyncMetaDataImpl* metaValue = [AGSyncMetaDataImpl wrapContent:object];
+    NSDictionary* temp = [AGSyncMetaDataImpl serialize:object];
+    [_restPipe save:temp success:^(id responseObject) {
+        NSLog(@"Inside Success");
+        // not needed if rest point
+        NSDictionary *contentDict = [NSJSONSerialization JSONObjectWithData:[responseObject[@"content"]  dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        NSDictionary* dict = @{@"id":responseObject[@"id"], @"rev":responseObject[@"rev"], @"content":contentDict};
+        if (success) {
+            success(dict);
+        }
+    } failure:^(NSError *error) {
         NSLog(@"Inside Failure....");
         //conflict(error, responseObject);
         if (error) {

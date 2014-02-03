@@ -17,9 +17,11 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol AGSyncMetaData;
+
 @protocol AGSync <AGPipe>
 
--(void) save:(NSDictionary*) object
+-(void) save:(id<AGSyncMetaData>) object
      success:(void (^)(id responseObject))success
      failure:(void (^)(NSError *error))failure
     conflict:(void (^)(NSError *error, id responseObject, id delta))conflict;

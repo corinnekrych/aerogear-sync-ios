@@ -18,23 +18,33 @@
 
 
 @implementation AGSyncMetaDataImpl
-@synthesize oid;
-@synthesize rev;
-@synthesize content;
+@synthesize oid = _oid;
+@synthesize rev = _rev;
+@synthesize content = _content;
 
 +(id<AGSyncMetaData>)wrapContent:(id)object {
-   return [[self alloc] initWithMetaData:object];
+    return [[self alloc] initWithMetaData:object];
 }
 
 -(id)initWithMetaData:(id)object {
     self = [super init];
     if(self) {
-        self.content = object;
+        if ([object isKindOfClass:[NSDictionary class]]) {
+            _content = object;
+            _oid = object[@"id"]?object[@"id"]:[NSNull null];
+            _rev = object[@"rev"]?object[@"rev"]:[NSNull null];
+        }
+
     }
     return self;
 }
 
--(NSDictionary*)serialize {
-    return [[NSDictionary alloc] initWithDictionary:@{@"id":self.oid, @"rev":self.rev, @"content":self.content}];
++(NSDictionary*)serialize:(id<AGSyncMetaData>)metadata {
+    if ([metadata.rev isEqual:[NSNull null]]) {
+        return @{@"id":metadata.oid?metadata.oid:[NSNull null], @"content":metadata.content?metadata.content:[NSNull null]};
+    }
+    return @{@"id":metadata.oid?metadata.oid:[NSNull null], @"rev":metadata.rev?metadata.rev:[NSNull null], @"content":metadata.content?metadata.content:[NSNull null]};
 }
+
+
 @end
