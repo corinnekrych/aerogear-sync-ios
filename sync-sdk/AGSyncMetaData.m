@@ -30,7 +30,7 @@
     self = [super init];
     if(self) {
         if ([object isKindOfClass:[NSDictionary class]]) {
-            _content = object;
+            _content = object[@"content"]?object[@"content"]:[NSNull null];
             _oid = object[@"id"]?object[@"id"]:[NSNull null];
             _rev = object[@"rev"]?object[@"rev"]:[NSNull null];
         }
