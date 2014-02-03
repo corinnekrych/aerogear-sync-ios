@@ -22,7 +22,7 @@
 @synthesize rev;
 @synthesize content;
 
-+(id<AGSyncMetaData>)wrapWithMetaData:(id)object {
++(id<AGSyncMetaData>)wrapContent:(id)object {
    return [[self alloc] initWithMetaData:object];
 }
 
@@ -32,5 +32,9 @@
         self.content = object;
     }
     return self;
+}
+
+-(NSDictionary*)serialize:(id<AGSyncMetaData>)data {
+    return [[NSDictionary alloc] initWithDictionary:@{@"id":data.oid, @"rev":data.rev, @"content":data.content}];
 }
 @end

@@ -19,5 +19,6 @@
 
 
 @interface AGSyncMetaDataImpl : NSObject <AGSyncMetaData>
-+(id<AGSyncMetaData>)wrapWithMetaData:(id)data;
++(id<AGSyncMetaData>)wrapContent:(id)data;
+-(NSDictionary*)serialize:(id<AGSyncMetaData>)data;
 @end
