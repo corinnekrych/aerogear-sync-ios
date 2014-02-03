@@ -19,7 +19,7 @@
 #import "AGRESTPipe.h"
 #import "AGSyncPipeConfiguration.h"
 #import "AGSyncMetaData.h"
-#import "AGSyncMetaDataImpl.h"
+#import "AGSyncMetaData.h"
 
 
 @implementation AGSyncPipe {
@@ -54,7 +54,7 @@
 }
 
 - (void)read:(id<AGSyncMetaData>)value success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
-    //AGSyncMetaDataImpl* metaValue = [AGSyncMetaDataImpl wrapContent:value];
+    //AGSyncMetaData* metaValue = [AGSyncMetaData wrapContent:value];
     [_restPipe read:value.oid success:^(id responseObject) {
         // not needed if rest point
         NSDictionary *contentDict = [NSJSONSerialization JSONObjectWithData:[responseObject[@"content"]  dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
@@ -74,8 +74,8 @@
 }
 
 - (void)save:(id<AGSyncMetaData>)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure conflict:(void (^)(NSError *error, id responseObject, id delta))conflict {
-    //AGSyncMetaDataImpl* metaValue = [AGSyncMetaDataImpl wrapContent:object];
-    NSDictionary* temp = [AGSyncMetaDataImpl serialize:object];
+    //AGSyncMetaData* metaValue = [AGSyncMetaData wrapContent:object];
+    NSDictionary* temp = [AGSyncMetaData serialize:object];
     [_restPipe save:temp success:^(id responseObject) {
         NSLog(@"Inside Success");
         // not needed if rest point

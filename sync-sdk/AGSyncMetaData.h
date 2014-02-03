@@ -16,8 +16,12 @@
  */
 #import <Foundation/Foundation.h>
 
-@protocol AGSyncMetaData <NSObject>
+
+@interface AGSyncMetaData : NSObject
 @property (nonatomic, readonly) NSString* oid;
 @property (nonatomic, readonly) NSString* rev;
 @property (nonatomic, strong) id content;
+
++(id<AGSyncMetaData>)wrapContent:(id)data;
++(NSDictionary*)serialize:(id<AGSyncMetaData>)metadata;
 @end

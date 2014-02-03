@@ -14,15 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#import "AGSyncMetaDataImpl.h"
+#import "AGSyncMetaData.h"
 
 
-@implementation AGSyncMetaDataImpl
+@implementation AGSyncMetaData
 @synthesize oid = _oid;
 @synthesize rev = _rev;
 @synthesize content = _content;
 
-+(id<AGSyncMetaData>)wrapContent:(id)object {
++(AGSyncMetaData*)wrapContent:(id)object {
     return [[self alloc] initWithMetaData:object];
 }
 
@@ -39,7 +39,7 @@
     return self;
 }
 
-+(NSDictionary*)serialize:(id<AGSyncMetaData>)metadata {
++(NSDictionary*)serialize:(AGSyncMetaData*)metadata {
     if ([metadata.rev isEqual:[NSNull null]]) {
         return @{@"id":metadata.oid?metadata.oid:[NSNull null], @"content":metadata.content?metadata.content:[NSNull null]};
     }
