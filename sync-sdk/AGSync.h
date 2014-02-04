@@ -24,6 +24,6 @@
 -(void) save:(AGSyncMetaData*) object
      success:(void (^)(id responseObject))success
      failure:(void (^)(NSError *error))failure
-    conflict:(void (^)(NSError *error, id responseObject, id delta))conflict;
+    conflict:(void (^)(NSError *error, AGSyncMetaData* fromObject, AGSyncMetaData* toObject))conflict;
 
 @end

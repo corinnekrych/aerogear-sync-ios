@@ -70,8 +70,7 @@
 }
 
 - (void)save:(AGSyncMetaData*)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure
-    conflict:(void (^)(NSError *error, id responseObject, id delta))conflict {
-    //AGSyncMetaData* metaValue = [AGSyncMetaData wrapContent:object];
+    conflict:(void (^)(NSError *error, AGSyncMetaData* fromObject, AGSyncMetaData* toObject))conflict {
     NSDictionary* temp = [AGSyncMetaData serialize:object];
     [_restPipe save:temp success:^(id responseObject) {
         NSLog(@"Inside Success");
@@ -80,13 +79,14 @@
         }
     } failure:^(NSError *error) {
         NSLog(@"Inside Failure....");
-        NSHTTPURLResponse* resp = error.userInfo[@"AFNetworkingOperationFailingURLResponseErrorKey"];
-        NSInteger statusCode = [resp statusCode];
+        NSNumber* statusCode = [NSNumber numberWithInteger:[error.userInfo[@"AFNetworkingOperationFailingURLResponseErrorKey"] statusCode]];
         NSString* description =  error.userInfo[@"NSLocalizedRecoverySuggestion"];
-        if ([[NSNumber numberWithInteger:statusCode] isEqualToNumber:[NSNumber numberWithInt:409]]) {
+        AGSyncMetaData* toObject = [AGSyncMetaData wrapContent:[NSJSONSerialization JSONObjectWithData:[description dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil]];
+
+        if ([statusCode isEqualToNumber:[NSNumber numberWithInt:409]]) {
             NSLog(@"CONFLICT DETECTED:: %@", description);
             if(conflict) {
-                conflict(error, @"id", @"TODO");
+                conflict(error, object, toObject);
             }
         }
     }];
