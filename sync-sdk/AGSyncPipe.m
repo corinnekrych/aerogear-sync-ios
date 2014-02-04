@@ -54,13 +54,9 @@
 }
 
 - (void)read:(AGSyncMetaData*)value success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure {
-    //AGSyncMetaData* metaValue = [AGSyncMetaData wrapContent:value];
     [_restPipe read:value.oid success:^(id responseObject) {
-        // not needed if rest point
-        NSDictionary *contentDict = [NSJSONSerialization JSONObjectWithData:[responseObject[@"content"]  dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-        NSDictionary* dict = @{@"id":responseObject[@"id"], @"rev":responseObject[@"rev"], @"content":contentDict};
         if (success) {
-            success(dict);
+            success(responseObject);
         }
     } failure:^(NSError *error) {
         if(failure) {
@@ -73,22 +69,25 @@
     [_restPipe readWithParams:parameterProvider success:success failure:failure];
 }
 
-- (void)save:(AGSyncMetaData*)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure conflict:(void (^)(NSError *error, id responseObject, id delta))conflict {
+- (void)save:(AGSyncMetaData*)object success:(void (^)(id responseObject))success failure:(void (^)(NSError *error))failure
+    conflict:(void (^)(NSError *error, id responseObject, id delta))conflict {
     //AGSyncMetaData* metaValue = [AGSyncMetaData wrapContent:object];
     NSDictionary* temp = [AGSyncMetaData serialize:object];
     [_restPipe save:temp success:^(id responseObject) {
         NSLog(@"Inside Success");
-        // not needed if rest point
-        NSDictionary *contentDict = [NSJSONSerialization JSONObjectWithData:[responseObject[@"content"]  dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-        NSDictionary* dict = @{@"id":responseObject[@"id"], @"rev":responseObject[@"rev"], @"content":contentDict};
         if (success) {
-            success(dict);
+            success(responseObject);
         }
     } failure:^(NSError *error) {
         NSLog(@"Inside Failure....");
-        //conflict(error, responseObject);
-        if (error) {
-
+        NSHTTPURLResponse* resp = error.userInfo[@"AFNetworkingOperationFailingURLResponseErrorKey"];
+        NSInteger statusCode = [resp statusCode];
+        NSString* description =  error.userInfo[@"NSLocalizedRecoverySuggestion"];
+        if ([[NSNumber numberWithInteger:statusCode] isEqualToNumber:[NSNumber numberWithInt:409]]) {
+            NSLog(@"CONFLICT DETECTED:: %@", description);
+            if(conflict) {
+                conflict(error, @"id", @"TODO");
+            }
         }
     }];
 
